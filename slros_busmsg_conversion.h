@@ -11,6 +11,7 @@
 #include <geometry_msgs/Vector3.h>
 #include <nav_msgs/Odometry.h>
 #include <ros/time.h>
+#include <std_msgs/Bool.h>
 #include <std_msgs/Header.h>
 #include "odometryadaptor_types.h"
 #include "slros_msgconvert_utils.h"
@@ -42,6 +43,9 @@ void convertToBus(SL_Bus_odometryadaptor_nav_msgs_Odometry* busPtr, nav_msgs::Od
 
 void convertFromBus(ros::Time* msgPtr, SL_Bus_odometryadaptor_ros_time_Time const* busPtr);
 void convertToBus(SL_Bus_odometryadaptor_ros_time_Time* busPtr, ros::Time const* msgPtr);
+
+void convertFromBus(std_msgs::Bool* msgPtr, SL_Bus_odometryadaptor_std_msgs_Bool const* busPtr);
+void convertToBus(SL_Bus_odometryadaptor_std_msgs_Bool* busPtr, std_msgs::Bool const* msgPtr);
 
 void convertFromBus(std_msgs::Header* msgPtr, SL_Bus_odometryadaptor_std_msgs_Header const* busPtr);
 void convertToBus(SL_Bus_odometryadaptor_std_msgs_Header* busPtr, std_msgs::Header const* msgPtr);

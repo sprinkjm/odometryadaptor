@@ -9,6 +9,9 @@ SimulinkSubscriber<geometry_msgs::Twist, SL_Bus_odometryadaptor_geometry_msgs_Tw
 // For Block odometryadaptor/Subscribe1
 SimulinkSubscriber<nav_msgs::Odometry, SL_Bus_odometryadaptor_nav_msgs_Odometry> Sub_odometryadaptor_88;
 
+// For Block odometryadaptor/Subscribe2
+SimulinkSubscriber<std_msgs::Bool, SL_Bus_odometryadaptor_std_msgs_Bool> Sub_odometryadaptor_112;
+
 // For Block odometryadaptor/Publish
 SimulinkPublisher<nav_msgs::Odometry, SL_Bus_odometryadaptor_nav_msgs_Odometry> Pub_odometryadaptor_79;
 

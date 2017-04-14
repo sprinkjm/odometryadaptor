@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'odometryadaptor'.
 //
-// Model version                  : 1.73
+// Model version                  : 1.110
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Apr  7 13:59:26 2017
+// C/C++ source code generated on : Fri Apr 14 15:39:59 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
   odometryadaptor_initialize();
 
   // Call RTOS Initialization funcation
-  myRTOSInit(0.2, 0);
+  myRTOSInit(0.05, 0);
 
   // Wait for stop semaphore
   sem_wait(&stopSem);

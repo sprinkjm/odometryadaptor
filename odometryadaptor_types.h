@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'odometryadaptor'.
 //
-// Model version                  : 1.73
+// Model version                  : 1.110
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Apr  7 13:59:26 2017
+// C/C++ source code generated on : Fri Apr 14 15:39:59 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -170,6 +170,16 @@ typedef struct {
   // MsgType=geometry_msgs/TwistWithCovariance
   SL_Bus_odometryadaptor_geometry_msgs_TwistWithCovariance Twist;
 } SL_Bus_odometryadaptor_nav_msgs_Odometry;
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_odometryadaptor_std_msgs_Bool_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_odometryadaptor_std_msgs_Bool_
+
+// MsgType=std_msgs/Bool
+typedef struct {
+  boolean_T Data;
+} SL_Bus_odometryadaptor_std_msgs_Bool;
 
 #endif
 

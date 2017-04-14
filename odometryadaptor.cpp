@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'odometryadaptor'.
 //
-// Model version                  : 1.73
+// Model version                  : 1.110
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Apr  7 13:59:26 2017
+// C/C++ source code generated on : Fri Apr 14 15:39:59 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -41,42 +41,43 @@ void odometryadaptor_step(void)
 {
   boolean_T varargout_1;
   SL_Bus_odometryadaptor_geometry_msgs_Twist varargout_2;
+  SL_Bus_odometryadaptor_std_msgs_Bool varargout_2_0;
 
   // Outputs for Atomic SubSystem: '<Root>/Subscribe1'
-  // Start for MATLABSystem: '<S4>/SourceBlock' incorporates:
-  //   Inport: '<S7>/In1'
-  //   MATLABSystem: '<S4>/SourceBlock'
+  // Start for MATLABSystem: '<S5>/SourceBlock' incorporates:
+  //   Inport: '<S10>/In1'
+  //   MATLABSystem: '<S5>/SourceBlock'
 
   varargout_1 = Sub_odometryadaptor_88.getLatestMessage
     (&odometryadaptor_B.BusAssignment);
 
-  // Outputs for Enabled SubSystem: '<S4>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S7>/Enable'
+  // Outputs for Enabled SubSystem: '<S5>/Enabled Subsystem' incorporates:
+  //   EnablePort: '<S10>/Enable'
 
   if (varargout_1) {
     odometryadaptor_B.In1 = odometryadaptor_B.BusAssignment;
   }
 
-  // End of Start for MATLABSystem: '<S4>/SourceBlock'
-  // End of Outputs for SubSystem: '<S4>/Enabled Subsystem'
+  // End of Start for MATLABSystem: '<S5>/SourceBlock'
+  // End of Outputs for SubSystem: '<S5>/Enabled Subsystem'
   // End of Outputs for SubSystem: '<Root>/Subscribe1'
 
   // Outputs for Atomic SubSystem: '<Root>/Subscribe'
-  // Start for MATLABSystem: '<S3>/SourceBlock' incorporates:
-  //   Inport: '<S6>/In1'
-  //   MATLABSystem: '<S3>/SourceBlock'
+  // Start for MATLABSystem: '<S4>/SourceBlock' incorporates:
+  //   Inport: '<S9>/In1'
+  //   MATLABSystem: '<S4>/SourceBlock'
 
   varargout_1 = Sub_odometryadaptor_1.getLatestMessage(&varargout_2);
 
-  // Outputs for Enabled SubSystem: '<S3>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S6>/Enable'
+  // Outputs for Enabled SubSystem: '<S4>/Enabled Subsystem' incorporates:
+  //   EnablePort: '<S9>/Enable'
 
   if (varargout_1) {
     odometryadaptor_B.In1_m = varargout_2;
   }
 
-  // End of Start for MATLABSystem: '<S3>/SourceBlock'
-  // End of Outputs for SubSystem: '<S3>/Enabled Subsystem'
+  // End of Start for MATLABSystem: '<S4>/SourceBlock'
+  // End of Outputs for SubSystem: '<S4>/Enabled Subsystem'
   // End of Outputs for SubSystem: '<Root>/Subscribe'
 
   // Chart: '<Root>/Chart'
@@ -134,14 +135,32 @@ void odometryadaptor_step(void)
 
   // End of Chart: '<Root>/Chart'
 
-  // MATLAB Function: '<Root>/update' incorporates:
-  //   SignalConversion: '<S5>/TmpSignal ConversionAt SFunction Inport2'
-  //   SignalConversion: '<S5>/TmpSignal ConversionAt SFunction Inport3'
+  // Outputs for Atomic SubSystem: '<Root>/Subscribe2'
+  // Start for MATLABSystem: '<S6>/SourceBlock' incorporates:
+  //   Inport: '<S11>/In1'
+  //   MATLABSystem: '<S6>/SourceBlock'
 
-  // MATLAB Function 'update': '<S5>:1'
-  // '<S5>:1:5' if( isempty(tmp) )
+  varargout_1 = Sub_odometryadaptor_112.getLatestMessage(&varargout_2_0);
+
+  // Outputs for Enabled SubSystem: '<S6>/Enabled Subsystem' incorporates:
+  //   EnablePort: '<S11>/Enable'
+
+  if (varargout_1) {
+    odometryadaptor_B.In1_k = varargout_2_0;
+  }
+
+  // End of Start for MATLABSystem: '<S6>/SourceBlock'
+  // End of Outputs for SubSystem: '<S6>/Enabled Subsystem'
+  // End of Outputs for SubSystem: '<Root>/Subscribe2'
+
+  // MATLAB Function: '<Root>/update' incorporates:
+  //   SignalConversion: '<S8>/TmpSignal ConversionAt SFunction Inport2'
+  //   SignalConversion: '<S8>/TmpSignal ConversionAt SFunction Inport3'
+
+  // MATLAB Function 'update': '<S8>:1'
+  // '<S8>:1:4' if( isempty(tmp))
   if (!odometryadaptor_DW.tmp_not_empty) {
-    // '<S5>:1:6' tmp = orientation;
+    // '<S8>:1:5' tmp = orientation;
     odometryadaptor_DW.tmp[0] = odometryadaptor_B.In1.Pose.Pose.Orientation.X;
     odometryadaptor_DW.tmp[1] = odometryadaptor_B.In1.Pose.Pose.Orientation.Y;
     odometryadaptor_DW.tmp[2] = odometryadaptor_B.In1.Pose.Pose.Orientation.Z;
@@ -149,9 +168,9 @@ void odometryadaptor_step(void)
     odometryadaptor_DW.tmp_not_empty = true;
   }
 
-  // '<S5>:1:9' if( isempty(tmp_origin) )
-  if (!odometryadaptor_DW.tmp_origin_not_empty) {
-    // '<S5>:1:10' tmp_origin = position;
+  // '<S8>:1:8' if( reset )
+  if (odometryadaptor_B.In1_k.Data) {
+    // '<S8>:1:9' tmp_origin = position;
     odometryadaptor_DW.tmp_origin[0] =
       odometryadaptor_B.In1.Pose.Pose.Position.X;
     odometryadaptor_DW.tmp_origin[1] =
@@ -161,27 +180,37 @@ void odometryadaptor_step(void)
     odometryadaptor_DW.tmp_origin_not_empty = true;
   }
 
-  // '<S5>:1:13' if( stopped )
+  // '<S8>:1:12' if( isempty(tmp_origin))
+  if (!odometryadaptor_DW.tmp_origin_not_empty) {
+    // '<S8>:1:13' tmp_origin = position;
+    odometryadaptor_DW.tmp_origin[0] =
+      odometryadaptor_B.In1.Pose.Pose.Position.X;
+    odometryadaptor_DW.tmp_origin[1] =
+      odometryadaptor_B.In1.Pose.Pose.Position.Y;
+    odometryadaptor_DW.tmp_origin[2] =
+      odometryadaptor_B.In1.Pose.Pose.Position.Z;
+    odometryadaptor_DW.tmp_origin_not_empty = true;
+  }
+
+  // '<S8>:1:16' if( ~stopped )
   if (!odometryadaptor_B.stopped) {
-    // '<S5>:1:15' else
-    // '<S5>:1:16' tmp = orientation;
+    // '<S8>:1:17' tmp = orientation;
     odometryadaptor_DW.tmp[0] = odometryadaptor_B.In1.Pose.Pose.Orientation.X;
     odometryadaptor_DW.tmp[1] = odometryadaptor_B.In1.Pose.Pose.Orientation.Y;
     odometryadaptor_DW.tmp[2] = odometryadaptor_B.In1.Pose.Pose.Orientation.Z;
     odometryadaptor_DW.tmp[3] = odometryadaptor_B.In1.Pose.Pose.Orientation.W;
-  } else {
-    // '<S5>:1:14' tmp = tmp;
   }
 
   // BusAssignment: '<Root>/Bus Assignment' incorporates:
   //   MATLAB Function: '<Root>/update'
-  //   SignalConversion: '<S5>/TmpSignal ConversionAt SFunction Inport2'
+  //   SignalConversion: '<S8>/TmpSignal ConversionAt SFunction Inport2'
 
-  // '<S5>:1:19' pose_out = zeros(3,1);
-  // '<S5>:1:20' pose_out(1) = position(1) - tmp_origin(1);
-  // '<S5>:1:21' pose_out(2) = position(2) - tmp_origin(2);
-  // '<S5>:1:22' pose_out(3) = position(3) - tmp_origin(3);
-  // '<S5>:1:24' q_out = tmp;
+  // '<S8>:1:20' pose_out = zeros(3,1);
+  // '<S8>:1:21' pose_out(1) = position(1) - tmp_origin(1);
+  // '<S8>:1:22' pose_out(2) = position(2) - tmp_origin(2);
+  // '<S8>:1:23' pose_out(3) = position(3) - tmp_origin(3);
+  // q_out = quatdivide(orientation',tmp')';
+  // '<S8>:1:26' q_out = tmp;
   odometryadaptor_B.BusAssignment = odometryadaptor_B.In1;
   odometryadaptor_B.BusAssignment.Pose.Pose.Position.X =
     odometryadaptor_B.In1.Pose.Pose.Position.X - odometryadaptor_DW.tmp_origin[0];
@@ -227,81 +256,107 @@ void odometryadaptor_initialize(void)
     static const char_T tmp[16] = { '/', 'c', 'a', 't', 'v', 'e', 'h', 'i', 'c',
       'l', 'e', '/', 'o', 'd', 'o', 'm' };
 
-    static const char_T tmp_0[15] = { '/', 'c', 'a', 't', 'v', 'e', 'h', 'i',
+    static const char_T tmp_0[22] = { '/', 'c', 'a', 't', 'v', 'e', 'h', 'i',
+      'c', 'l', 'e', '/', 'o', 'd', 'o', 'm', '_', 'r', 'e', 's', 'e', 't' };
+
+    static const char_T tmp_1[15] = { '/', 'c', 'a', 't', 'v', 'e', 'h', 'i',
       'c', 'l', 'e', '/', 'v', 'e', 'l' };
 
-    static const char_T tmp_1[13] = { '/', 'o', 'd', 'o', 'm', '_', 'b', 'e',
+    static const char_T tmp_2[13] = { '/', 'o', 'd', 'o', 'm', '_', 'b', 'e',
       's', 't', 'u', 't', 'm' };
 
-    char_T tmp_2[17];
-    char_T tmp_3[16];
-    char_T tmp_4[14];
+    char_T tmp_3[17];
+    char_T tmp_4[16];
+    char_T tmp_5[14];
     int32_T i;
 
     // Start for Atomic SubSystem: '<Root>/Subscribe1'
-    // Start for MATLABSystem: '<S4>/SourceBlock'
+    // Start for MATLABSystem: '<S5>/SourceBlock'
     odometryadaptor_DW.obj_k.isInitialized = 0;
     odometryadaptor_DW.obj_k.isInitialized = 1;
     for (i = 0; i < 13; i++) {
-      tmp_4[i] = tmp_1[i];
+      tmp_5[i] = tmp_2[i];
     }
 
-    tmp_4[13] = '\x00';
-    Sub_odometryadaptor_88.createSubscriber(tmp_4,
+    tmp_5[13] = '\x00';
+    Sub_odometryadaptor_88.createSubscriber(tmp_5,
       odometryadaptor_MessageQueueLen);
 
-    // End of Start for MATLABSystem: '<S4>/SourceBlock'
+    // End of Start for MATLABSystem: '<S5>/SourceBlock'
     // End of Start for SubSystem: '<Root>/Subscribe1'
 
     // Start for Atomic SubSystem: '<Root>/Subscribe'
-    // Start for MATLABSystem: '<S3>/SourceBlock'
+    // Start for MATLABSystem: '<S4>/SourceBlock'
     odometryadaptor_DW.obj_n.isInitialized = 0;
     odometryadaptor_DW.obj_n.isInitialized = 1;
     for (i = 0; i < 15; i++) {
-      tmp_3[i] = tmp_0[i];
+      tmp_4[i] = tmp_1[i];
     }
 
-    tmp_3[15] = '\x00';
-    Sub_odometryadaptor_1.createSubscriber(tmp_3,
+    tmp_4[15] = '\x00';
+    Sub_odometryadaptor_1.createSubscriber(tmp_4,
       odometryadaptor_MessageQueueLen);
 
-    // End of Start for MATLABSystem: '<S3>/SourceBlock'
+    // End of Start for MATLABSystem: '<S4>/SourceBlock'
     // End of Start for SubSystem: '<Root>/Subscribe'
+
+    // Start for Atomic SubSystem: '<Root>/Subscribe2'
+    // Start for MATLABSystem: '<S6>/SourceBlock'
+    odometryadaptor_DW.obj_f.isInitialized = 0;
+    odometryadaptor_DW.obj_f.isInitialized = 1;
+    for (i = 0; i < 22; i++) {
+      odometryadaptor_B.cv0[i] = tmp_0[i];
+    }
+
+    odometryadaptor_B.cv0[22] = '\x00';
+    Sub_odometryadaptor_112.createSubscriber(odometryadaptor_B.cv0,
+      odometryadaptor_MessageQueueLen);
+
+    // End of Start for MATLABSystem: '<S6>/SourceBlock'
+    // End of Start for SubSystem: '<Root>/Subscribe2'
 
     // Start for Atomic SubSystem: '<Root>/Publish'
     // Start for MATLABSystem: '<S2>/SinkBlock'
     odometryadaptor_DW.obj.isInitialized = 0;
     odometryadaptor_DW.obj.isInitialized = 1;
     for (i = 0; i < 16; i++) {
-      tmp_2[i] = tmp[i];
+      tmp_3[i] = tmp[i];
     }
 
-    tmp_2[16] = '\x00';
-    Pub_odometryadaptor_79.createPublisher(tmp_2,
+    tmp_3[16] = '\x00';
+    Pub_odometryadaptor_79.createPublisher(tmp_3,
       odometryadaptor_MessageQueueLen);
 
     // End of Start for MATLABSystem: '<S2>/SinkBlock'
     // End of Start for SubSystem: '<Root>/Publish'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe1'
-    // SystemInitialize for Enabled SubSystem: '<S4>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S7>/Out1'
+    // SystemInitialize for Enabled SubSystem: '<S5>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S10>/Out1'
     odometryadaptor_B.In1 = odometryadaptor_P.Out1_Y0;
 
-    // End of SystemInitialize for SubSystem: '<S4>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S5>/Enabled Subsystem'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe1'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe'
-    // SystemInitialize for Enabled SubSystem: '<S3>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S6>/Out1'
+    // SystemInitialize for Enabled SubSystem: '<S4>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S9>/Out1'
     odometryadaptor_B.In1_m = odometryadaptor_P.Out1_Y0_f;
 
-    // End of SystemInitialize for SubSystem: '<S3>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S4>/Enabled Subsystem'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe'
 
     // SystemInitialize for Chart: '<Root>/Chart'
     odometryadaptor_DW.is_active_c3_odometryadaptor = 0U;
     odometryadaptor_DW.is_c3_odometryadaptor = odometryadap_IN_NO_ACTIVE_CHILD;
+
+    // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe2'
+    // SystemInitialize for Enabled SubSystem: '<S6>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S11>/Out1'
+    odometryadaptor_B.In1_k = odometryadaptor_P.Out1_Y0_g;
+
+    // End of SystemInitialize for SubSystem: '<S6>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<Root>/Subscribe2'
 
     // SystemInitialize for MATLAB Function: '<Root>/update'
     odometryadaptor_DW.tmp_not_empty = false;
@@ -313,26 +368,37 @@ void odometryadaptor_initialize(void)
 void odometryadaptor_terminate(void)
 {
   // Terminate for Atomic SubSystem: '<Root>/Subscribe1'
-  // Start for MATLABSystem: '<S4>/SourceBlock' incorporates:
-  //   Terminate for MATLABSystem: '<S4>/SourceBlock'
+  // Start for MATLABSystem: '<S5>/SourceBlock' incorporates:
+  //   Terminate for MATLABSystem: '<S5>/SourceBlock'
 
   if (odometryadaptor_DW.obj_k.isInitialized == 1) {
     odometryadaptor_DW.obj_k.isInitialized = 2;
   }
 
-  // End of Start for MATLABSystem: '<S4>/SourceBlock'
+  // End of Start for MATLABSystem: '<S5>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe1'
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe'
-  // Start for MATLABSystem: '<S3>/SourceBlock' incorporates:
-  //   Terminate for MATLABSystem: '<S3>/SourceBlock'
+  // Start for MATLABSystem: '<S4>/SourceBlock' incorporates:
+  //   Terminate for MATLABSystem: '<S4>/SourceBlock'
 
   if (odometryadaptor_DW.obj_n.isInitialized == 1) {
     odometryadaptor_DW.obj_n.isInitialized = 2;
   }
 
-  // End of Start for MATLABSystem: '<S3>/SourceBlock'
+  // End of Start for MATLABSystem: '<S4>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe'
+
+  // Terminate for Atomic SubSystem: '<Root>/Subscribe2'
+  // Start for MATLABSystem: '<S6>/SourceBlock' incorporates:
+  //   Terminate for MATLABSystem: '<S6>/SourceBlock'
+
+  if (odometryadaptor_DW.obj_f.isInitialized == 1) {
+    odometryadaptor_DW.obj_f.isInitialized = 2;
+  }
+
+  // End of Start for MATLABSystem: '<S6>/SourceBlock'
+  // End of Terminate for SubSystem: '<Root>/Subscribe2'
 
   // Terminate for Atomic SubSystem: '<Root>/Publish'
   // Start for MATLABSystem: '<S2>/SinkBlock' incorporates:

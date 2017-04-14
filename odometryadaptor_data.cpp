@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'odometryadaptor'.
 //
-// Model version                  : 1.73
+// Model version                  : 1.110
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Apr  7 13:59:26 2017
+// C/C++ source code generated on : Fri Apr 14 15:39:59 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -107,7 +107,7 @@ P_odometryadaptor_T odometryadaptor_P = {
       }                                // Twist
     }                                  // Twist
   },                                   // Computed Parameter: Out1_Y0
-                                       //  Referenced by: '<S7>/Out1'
+                                       //  Referenced by: '<S10>/Out1'
 
 
   {
@@ -196,7 +196,7 @@ P_odometryadaptor_T odometryadaptor_P = {
       }                                // Twist
     }                                  // Twist
   },                                   // Computed Parameter: Constant_Value
-                                       //  Referenced by: '<S4>/Constant'
+                                       //  Referenced by: '<S5>/Constant'
 
 
   {
@@ -212,7 +212,7 @@ P_odometryadaptor_T odometryadaptor_P = {
       0.0                              // Z
     }                                  // Angular
   },                                   // Computed Parameter: Out1_Y0_f
-                                       //  Referenced by: '<S6>/Out1'
+                                       //  Referenced by: '<S9>/Out1'
 
 
   {
@@ -227,8 +227,20 @@ P_odometryadaptor_T odometryadaptor_P = {
       0.0,                             // Y
       0.0                              // Z
     }                                  // Angular
-  }                                    // Computed Parameter: Constant_Value_d
-                                       //  Referenced by: '<S3>/Constant'
+  },                                   // Computed Parameter: Constant_Value_d
+                                       //  Referenced by: '<S4>/Constant'
+
+
+  {
+    false                              // Data
+  },                                   // Computed Parameter: Out1_Y0_g
+                                       //  Referenced by: '<S11>/Out1'
+
+
+  {
+    false                              // Data
+  }                                    // Computed Parameter: Constant_Value_i
+                                       //  Referenced by: '<S6>/Constant'
 
 };
 

@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'odometryadaptor'.
 //
-// Model version                  : 1.73
+// Model version                  : 1.110
 // Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Apr  7 13:59:26 2017
+// C/C++ source code generated on : Fri Apr 14 15:39:59 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -39,9 +39,11 @@
 
 // Block signals (auto storage)
 typedef struct {
-  SL_Bus_odometryadaptor_nav_msgs_Odometry In1;// '<S7>/In1'
+  SL_Bus_odometryadaptor_nav_msgs_Odometry In1;// '<S10>/In1'
   SL_Bus_odometryadaptor_nav_msgs_Odometry BusAssignment;// '<Root>/Bus Assignment' 
-  SL_Bus_odometryadaptor_geometry_msgs_Twist In1_m;// '<S6>/In1'
+  SL_Bus_odometryadaptor_geometry_msgs_Twist In1_m;// '<S9>/In1'
+  char_T cv0[23];
+  SL_Bus_odometryadaptor_std_msgs_Bool In1_k;// '<S11>/In1'
   boolean_T stopped;                   // '<Root>/Chart'
 } B_odometryadaptor_T;
 
@@ -49,12 +51,14 @@ typedef struct {
 typedef struct {
   real_T tmp[4];                       // '<Root>/update'
   real_T tmp_origin[3];                // '<Root>/update'
-  void *SourceBlock_PWORK;             // '<S4>/SourceBlock'
-  void *SourceBlock_PWORK_f;           // '<S3>/SourceBlock'
+  void *SourceBlock_PWORK;             // '<S6>/SourceBlock'
+  void *SourceBlock_PWORK_l;           // '<S5>/SourceBlock'
+  void *SourceBlock_PWORK_f;           // '<S4>/SourceBlock'
   void *SinkBlock_PWORK;               // '<S2>/SinkBlock'
   robotics_slros_internal_block_T obj; // '<S2>/SinkBlock'
-  robotics_slros_internal_blo_i_T obj_k;// '<S4>/SourceBlock'
-  robotics_slros_internal_blo_i_T obj_n;// '<S3>/SourceBlock'
+  robotics_slros_internal_blo_i_T obj_f;// '<S6>/SourceBlock'
+  robotics_slros_internal_blo_i_T obj_k;// '<S5>/SourceBlock'
+  robotics_slros_internal_blo_i_T obj_n;// '<S4>/SourceBlock'
   uint8_T is_active_c3_odometryadaptor;// '<Root>/Chart'
   uint8_T is_c3_odometryadaptor;       // '<Root>/Chart'
   boolean_T tmp_not_empty;             // '<Root>/update'
@@ -64,16 +68,22 @@ typedef struct {
 // Parameters (auto storage)
 struct P_odometryadaptor_T_ {
   SL_Bus_odometryadaptor_nav_msgs_Odometry Out1_Y0;// Computed Parameter: Out1_Y0
-                                                   //  Referenced by: '<S7>/Out1'
+                                                   //  Referenced by: '<S10>/Out1'
 
   SL_Bus_odometryadaptor_nav_msgs_Odometry Constant_Value;// Computed Parameter: Constant_Value
-                                                          //  Referenced by: '<S4>/Constant'
+                                                          //  Referenced by: '<S5>/Constant'
 
   SL_Bus_odometryadaptor_geometry_msgs_Twist Out1_Y0_f;// Computed Parameter: Out1_Y0_f
-                                                       //  Referenced by: '<S6>/Out1'
+                                                       //  Referenced by: '<S9>/Out1'
 
   SL_Bus_odometryadaptor_geometry_msgs_Twist Constant_Value_d;// Computed Parameter: Constant_Value_d
-                                                              //  Referenced by: '<S3>/Constant'
+                                                              //  Referenced by: '<S4>/Constant'
+
+  SL_Bus_odometryadaptor_std_msgs_Bool Out1_Y0_g;// Computed Parameter: Out1_Y0_g
+                                                 //  Referenced by: '<S11>/Out1'
+
+  SL_Bus_odometryadaptor_std_msgs_Bool Constant_Value_i;// Computed Parameter: Constant_Value_i
+                                                        //  Referenced by: '<S6>/Constant'
 
 };
 
@@ -144,6 +154,12 @@ extern "C" {
 #endif
 
 //-
+//  These blocks were eliminated from the model due to optimizations:
+//
+//  Block '<Root>/Data Type Conversion' : Eliminate redundant data type conversion
+
+
+//-
 //  The generated code includes comments that allow you to trace directly
 //  back to the appropriate location in the model.  The basic format
 //  is <system>/block_name, where system is the system number (uniquely
@@ -160,11 +176,16 @@ extern "C" {
 //  '<Root>' : 'odometryadaptor'
 //  '<S1>'   : 'odometryadaptor/Chart'
 //  '<S2>'   : 'odometryadaptor/Publish'
-//  '<S3>'   : 'odometryadaptor/Subscribe'
-//  '<S4>'   : 'odometryadaptor/Subscribe1'
-//  '<S5>'   : 'odometryadaptor/update'
-//  '<S6>'   : 'odometryadaptor/Subscribe/Enabled Subsystem'
-//  '<S7>'   : 'odometryadaptor/Subscribe1/Enabled Subsystem'
+//  '<S3>'   : 'odometryadaptor/Rotation Angles to Quaternions'
+//  '<S4>'   : 'odometryadaptor/Subscribe'
+//  '<S5>'   : 'odometryadaptor/Subscribe1'
+//  '<S6>'   : 'odometryadaptor/Subscribe2'
+//  '<S7>'   : 'odometryadaptor/Subscribe3'
+//  '<S8>'   : 'odometryadaptor/update'
+//  '<S9>'   : 'odometryadaptor/Subscribe/Enabled Subsystem'
+//  '<S10>'  : 'odometryadaptor/Subscribe1/Enabled Subsystem'
+//  '<S11>'  : 'odometryadaptor/Subscribe2/Enabled Subsystem'
+//  '<S12>'  : 'odometryadaptor/Subscribe3/Enabled Subsystem'
 
 #endif                                 // RTW_HEADER_odometryadaptor_h_
 
